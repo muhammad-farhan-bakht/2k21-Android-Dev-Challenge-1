@@ -47,7 +47,6 @@ fun DetailsScreen(catModel: Cats, onBackPressed: () -> Unit) {
                 },
                 backgroundColor = Color.White,
                 elevation = 8.dp,
-                modifier = Modifier.padding(all = 5.dp),
                 navigationIcon = {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
@@ -194,10 +193,3 @@ fun InfoBox(infoKey: String, infoValue: String) {
         }
     }
 }
-
-@ExperimentalFoundationApi
-@Composable
-fun bottomButton(){
-
-}
-

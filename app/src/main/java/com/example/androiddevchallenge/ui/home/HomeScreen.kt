@@ -48,8 +48,7 @@ fun HomeScreen(catClicked: (Cats) -> Unit = {}) {
                     )
                 },
                 backgroundColor = Color.White,
-                elevation = 8.dp,
-                modifier = Modifier.padding(all = 5.dp)
+                elevation = 8.dp
             )
         },
         content = {
