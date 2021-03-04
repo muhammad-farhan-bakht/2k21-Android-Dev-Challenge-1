@@ -23,14 +23,14 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import com.example.androiddevchallenge.main.arch.Screen
+import com.example.androiddevchallenge.main.viewmodel.MainViewModel
 import com.example.androiddevchallenge.model.Cats
 import com.example.androiddevchallenge.ui.details.DetailsScreen
 import com.example.androiddevchallenge.ui.home.HomeScreen
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import androidx.compose.runtime.getValue
-import com.example.androiddevchallenge.main.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,13 +42,15 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MyTheme {
                 val currentScreen: Screen by navigationViewModel.currentScreen.observeAsState(Screen.HomeScreen)
-                MyApp(currentScreen = currentScreen,
+                MyApp(
+                    currentScreen = currentScreen,
                     catClicked = { catModel ->
                         navigationViewModel.onCatSelected(catModel)
                     },
                     onBackPressed = {
                         onBackPressed()
-                    })
+                    }
+                )
             }
         }
     }
@@ -59,8 +61,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-
 
 // Start building your app here!
 @ExperimentalFoundationApi
@@ -75,21 +75,3 @@ fun MyApp(currentScreen: Screen = Screen.HomeScreen, catClicked: (Cats) -> Unit 
         }
     }
 }
-
-/*@ExperimentalFoundationApi
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    MyTheme {
-        MyApp()
-    }
-}
-
-@ExperimentalFoundationApi
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        MyApp()
-    }
-}*/
